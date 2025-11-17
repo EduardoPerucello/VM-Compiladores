@@ -1,0 +1,41 @@
+{
+  "name": "mvd-app",
+  "version": "1.0.0",
+  "description": "Máquina Virtual Didática (Flask + Electron)",
+  "author": "Lenda",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "com.lenda.mvd",
+    "productName": "MVD Virtual Machine",
+    "directories": {
+      "buildResources": "../frontend"
+    },
+    "files": [
+      "**/*",
+      "../backend/**/*",
+      "../frontend/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "../backend",
+        "to": "backend"
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "icon.png"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "icon.png"
+    }
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^25.0.0"
+  }
+}

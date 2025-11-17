@@ -1,0 +1,167 @@
+<!-- frontend/index.html -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MVD VM - Interface</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Consolas, monospace;
+      background: #121212;
+      color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      background: #1f1f1f;
+      padding: 10px 20px;
+      text-align: center;
+      border-bottom: 2px solid #333;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      padding: 10px;
+      gap: 10px;
+    }
+
+    section#left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    section#right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .panel {
+      background: #1e1e1e;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 10px;
+      flex: 1;
+      overflow: auto;
+    }
+
+    textarea {
+      width: 100%;
+      height: 300px;
+      background: #0f0f0f;
+      color: #00ff9d;
+      border: 1px solid #333;
+      border-radius: 6px;
+      padding: 8px;
+      resize: vertical;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 8px;
+    }
+
+    button, select {
+      background: #00b894;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 10px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover, select:hover {
+      background: #009874;
+    }
+
+    pre {
+      background: #0f0f0f;
+      border-radius: 6px;
+      padding: 6px;
+      font-size: 14px;
+      color: #d6d6d6;
+      overflow-x: auto;
+    }
+
+    footer {
+      background: #1f1f1f;
+      text-align: center;
+      padding: 5px;
+      font-size: 12px;
+      border-top: 1px solid #333;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>MVD - Máquina Virtual Didática</h1>
+  </header>
+
+  <main>
+    <section id="left">
+      <div class="panel">
+        <h2>Código Assembly</h2>
+        <textarea id="editor" spellcheck="false" rows="18"></textarea>
+
+        <div class="row">
+          <button id="btnLoad">Load</button>
+          <button id="btnStep">Step</button>
+          <button id="btnRun">Run</button>
+          <button id="btnReset">Reset</button>
+          <select id="exampleSelect"></select>
+          <button id="btnLoadExample">Load Example</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="right">
+      <div class="panel">
+        <h3>Estado</h3>
+        <div><strong>PC:</strong> <span id="pc">-</span></div>
+        <div><strong>Próxima instrução:</strong> <span id="next_instr">-</span></div>
+        <div><strong>Status:</strong> <span id="status">-</span></div>
+      </div>
+
+      <div class="panel">
+        <h3>Pilha</h3>
+        <pre id="stackView">[]</pre>
+      </div>
+
+      <div class="panel">
+        <h3>Memória (variáveis)</h3>
+        <pre id="memView">{}</pre>
+      </div>
+
+      <div class="panel">
+        <h3>Saída (PRN)</h3>
+        <pre id="outView">[]</pre>
+      </div>
+
+      <div class="panel">
+        <h3>Log / Erros</h3>
+        <pre id="logView">[Sistema iniciado]</pre>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <small>Feito para fins educacionais — empacote com Electron para gerar executável.</small>
+  </footer>
+
+  <!-- 🔹 Carregamento do script principal -->
+  <script src="main.js"></script>
+</body>
+</html>
