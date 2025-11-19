@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    body { 
+      background: #222; 
+      color: white; 
+      font-family: Arial; 
+      padding: 20px; 
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      font-size: 18px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px 15px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h3 id="msg"></h3>
+  <input id="value" type="text" autofocus />
+  <button onclick="send()">OK</button>
+
+  <script>
+    const { ipcRenderer } = require("electron");
+
+    ipcRenderer.on("set-message", (_, text) => {
+      document.getElementById("msg").textContent = text;
+    });
+
+    function send() {
+      const val = document.getElementById("value").value;
+      ipcRenderer.send("input-value", val);
+      window.close();
+    }
+  </script>
+</body>
+</html>

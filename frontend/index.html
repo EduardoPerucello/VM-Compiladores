@@ -1,4 +1,3 @@
-<!-- frontend/index.html -->
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -72,7 +71,7 @@
       margin-top: 8px;
     }
 
-    button, select {
+    button, select, input[type=file] {
       background: #00b894;
       color: white;
       border: none;
@@ -121,6 +120,11 @@
           <button id="btnStep">Step</button>
           <button id="btnRun">Run</button>
           <button id="btnReset">Reset</button>
+
+          <!-- 🔹 Inputs para carregar arquivo -->
+          <input type="file" id="fileInput" accept=".asm,.txt">
+          <button id="btnUpload">Carregar Arquivo</button>
+
           <select id="exampleSelect"></select>
           <button id="btnLoadExample">Load Example</button>
         </div>
@@ -141,7 +145,7 @@
       </div>
 
       <div class="panel">
-        <h3>Memória (variáveis)</h3>
+        <h3>Memória</h3>
         <pre id="memView">{}</pre>
       </div>
 
@@ -161,7 +165,6 @@
     <small>Feito para fins educacionais — empacote com Electron para gerar executável.</small>
   </footer>
 
-  <!-- 🔹 Carregamento do script principal -->
   <script src="main.js"></script>
 </body>
 </html>
